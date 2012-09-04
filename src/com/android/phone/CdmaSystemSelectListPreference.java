@@ -85,7 +85,7 @@ public class CdmaSystemSelectListPreference extends ListPreference {
                         Secure.CDMA_ROAMING_MODE,
                         buttonCdmaRoamingMode );
                 //Set the roaming preference mode
-                mPhone.setCdmaRoamingPreference(statusCdmaRoamingMode, mHandler
+                mPhone.setCdmaRoamingPreference(buttonCdmaRoamingMode, mHandler
                         .obtainMessage(MyHandler.MESSAGE_SET_ROAMING_PREFERENCE));
             }
         } else {
@@ -121,8 +121,7 @@ public class CdmaSystemSelectListPreference extends ListPreference {
                         mPhone.getContext().getContentResolver(),
                         Secure.CDMA_ROAMING_MODE, Phone.CDMA_RM_HOME);
                 //check that statusCdmaRoamingMode is from an accepted value
-                if (statusCdmaRoamingMode == Phone.CDMA_RM_HOME ||
-                        statusCdmaRoamingMode == Phone.CDMA_RM_ANY ) {
+				if (findIndexOfValue(Integer.toString(statusCdmaRoamingMode)) != -1) {
                     //check changes in statusCdmaRoamingMode and updates settingsRoamingMode
                     if (statusCdmaRoamingMode != settingsRoamingMode) {
                         settingsRoamingMode = statusCdmaRoamingMode;
